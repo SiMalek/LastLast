@@ -1,0 +1,36 @@
+<div class="modal-backdrop" (click)="closeModal()"></div>
+<div class="modal-content shadow-lg">
+    <div class="modal-header">
+        <h5 class="modal-title">{{ selectedQA ? 'Edit' : 'Add' }} Question</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="qaForm">
+            <div class="mb-3">
+                <label for="question" class="form-label">Question</label>
+                <input type="text" class="form-control" id="question" formControlName="question">
+            </div>
+            <div class="mb-3">
+                <label for="answer" class="form-label">Answer</label>
+                <textarea class="form-control" id="answer" formControlName="answer"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="theme" class="form-label">Theme</label>
+                <select class="form-control" id="theme" formControlName="theme">
+                    <option *ngFor="let theme of themes$ | async" [value]="theme.name">{{ theme.name }}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="subTheme" class="form-label">SubTheme</label>
+                <select class="form-control" id="subTheme" formControlName="subTheme">
+                    <option *ngFor="let subTheme of subThemes$ | async" [value]="subTheme.name">{{ subTheme.name }}
+                    </option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Save changes</button>
+    </div>
+</div>

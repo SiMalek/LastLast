@@ -1,0 +1,13 @@
+<div class="duplicate-container">
+    <h3>Duplicate Questions</h3>
+    <div *ngIf="duplicates.length === 0" class="alert alert-info">No duplicates found.</div>
+    <ul *ngFor="let duplicate of duplicates" class="list-group">
+        <li class="list-group-item duplicate-item">
+            <strong>Question 1:</strong> {{ duplicate.question1.question }}
+            <br>
+            <strong>Question 2:</strong> {{ duplicate.question2.question }}
+            <br>
+            <strong>Similarity:</strong> {{ (duplicate.similarity * 100) | number:'1.0-2' }}%
+        </li>
+    </ul>
+</div>

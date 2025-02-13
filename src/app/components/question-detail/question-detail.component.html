@@ -1,0 +1,4 @@
+<div *ngIf="question" class="question-detail-container">
+    <h2>{{ question.question_text }}</h2>
+    <p>{{ question.answer_text || 'No answer available yet.' }}</p>
+</div>
